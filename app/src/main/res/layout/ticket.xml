@@ -1,36 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Title" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Content" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/gray"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
+        android:background="@drawable/background_layout"
+        android:layout_margin="3pt"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button"
+        <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="delete" />
+            android:text="Title"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/button2"
+        <TextView
+            android:id="@+id/tvDes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="edit" />
+            android:text="In this random generator you can enter several names from which groups of the desired size are formed randomly. A more detailed description you can find here." />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="40pt"
+                android:layout_height="20pt"
+                android:layout_marginRight="10pt"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/baseline_edit_black_18dp" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="40pt"
+                android:layout_height="20pt"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/baseline_delete_black_18dp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
