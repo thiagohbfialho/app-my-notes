@@ -20,6 +20,7 @@ class DbManager {
     val sqlCreateTable = "CREATE TABLE IF NOT EXISTS "+ dbTable + "(" + colID + " INTEGER PRIMARY KEY," +
             colTitle + " TEXT, " + colDes + " TEXT);"
     var sqlDB:SQLiteDatabase?=null
+
     constructor(context: Context){
         var db = DatabaseHelperNotes(context)
         sqlDB = db.writableDatabase
