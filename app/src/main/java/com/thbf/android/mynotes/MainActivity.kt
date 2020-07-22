@@ -24,12 +24,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Add dummy data
-//        listNotes.add(Note(1,"meet professor","Create any pattern of your own - tiles, texture, skin, wallpaper, comic effect, website background and more.  Change any artwork of pattern you found into different flavors and call them your own."))
-//        listNotes.add(Note(2,"meet doctor","Create any pattern of your own - tiles, texture, skin, wallpaper, comic effect, website background and more.  Change any artwork of pattern you found into different flavors and call them your own."))
-//        listNotes.add(Note(3,"meet friend","Create any pattern of your own - tiles, texture, skin, wallpaper, comic effect, website background and more.  Change any artwork of pattern you found into different flavors and call them your own."))
+    }
 
-
+    override fun onResume() {
+        super.onResume()
+        //Load all notes from SQLite
         LoadQuery("%")
     }
 
@@ -64,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         sv.setSearchableInfo(sm.getSearchableInfo(componentName))
         sv.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Toast.makeText(applicationContext,query,Toast.LENGTH_LONG).show()
+                //Toast.makeText(applicationContext,query,Toast.LENGTH_LONG).show()
                 LoadQuery("%"+ query + "%")
                 return false
             }
@@ -92,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    class MyNotesAdapter:BaseAdapter {
+    inner class MyNotesAdapter:BaseAdapter {
 
         var listNotesAdapter = ArrayList<Note>()
         var context:Context?=null
@@ -108,6 +107,15 @@ class MainActivity : AppCompatActivity() {
             var myNote = listNotesAdapter[position]
             viewNotes.tvTitle.text = myNote.nodeName
             viewNotes.tvDes.text = myNote.nodeDes
+            viewNotes.ivDelete.setOnClickListener(View.OnClickListener {
+                var dbManager = DbManager(context!!)
+                val selectionArgs = arrayOf(myNote.nodeId.toString())
+                dbManager.Delete("ID = ?",selectionArgs)
+                LoadQuery("%")
+            })
+            viewNotes.ivEdit.setOnClickListener(View.OnClickListener {
+                GoToUpdate(myNote)
+            })
 
             return viewNotes
         }
@@ -123,6 +131,14 @@ class MainActivity : AppCompatActivity() {
         override fun getCount(): Int {
             return listNotesAdapter.size
         }
+    }
+
+    fun GoToUpdate(note:Note){
+        var intent = Intent(this,AddNotes::class.java)
+        intent.putExtra("ID",note.nodeId)
+        intent.putExtra("name",note.nodeName)
+        intent.putExtra("des",note.nodeDes)
+        startActivity(intent)
     }
 
 }

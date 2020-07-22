@@ -39,7 +39,7 @@
                 android:layout_weight="1" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/ivEdit"
                 android:layout_width="40pt"
                 android:layout_height="20pt"
                 android:layout_marginRight="10pt"
@@ -47,7 +47,7 @@
                 app:srcCompat="@drawable/baseline_edit_black_18dp" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/ivDelete"
                 android:layout_width="40pt"
                 android:layout_height="20pt"
                 android:layout_weight="1"

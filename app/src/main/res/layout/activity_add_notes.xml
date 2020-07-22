@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:ems="10"
-        android:hint="Enter title"
+        android:hint="@string/titlehint"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:ems="10"
-        android:hint="Enter description of note"
+        android:hint="@string/deshint"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -40,7 +40,7 @@
         android:layout_marginBottom="76dp"
         android:background="@drawable/bublue_color"
         android:onClick="buAdd"
-        android:text="Add Note"
+        android:text="@string/add_note"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
